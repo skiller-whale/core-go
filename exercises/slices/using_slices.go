@@ -34,7 +34,9 @@ func main() {
 	fmt.Println()
 }
 
-// To be pulled out to separate file / package
+// This is a utility function that loads the popular names from a CSV file.
+// You do not need to edit anything in this function and are not expected
+// to understand how it works.
 func loadNames() [][]string {
 
 	file, err := os.Open("popular_female_names_1990s.csv")

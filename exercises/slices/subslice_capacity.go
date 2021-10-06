@@ -13,7 +13,9 @@ func main() {
 	printNames(popularNames[0:8])
 }
 
-// To be de-duplicated by pulling out to separate file / package
+// The following are utility functions used in the exercise.
+// You do not need to edit anything below and are not expected
+// to understand how the functions work.
 func loadNames() [][]string {
 
 	file, err := os.Open("popular_female_names_1990s.csv")
