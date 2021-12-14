@@ -22,10 +22,6 @@ func load() Account {
 	}
 }
 
-func adjustBalance(account Account) {
-	account.balance = 2000
-}
-
 func printAccount(account Account) {
 	fmt.Println("Account:", account.balance, account.ref)
 }
