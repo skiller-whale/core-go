@@ -5,5 +5,5 @@ package main
 // }
 
 func main() {
-	// writeDescription("https://github.com/octocat/", user.repositories)
+	// processRepos("https://github.com/octocat", user.repositories)
 }

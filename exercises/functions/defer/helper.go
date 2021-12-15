@@ -6,13 +6,14 @@ import (
 	"os"
 )
 
-var employees = []string{"2000", "1001", "1002", "1003"}
+var employees = []string{"2000", "1001", "1002", "1003", "1004"}
 var opened = false
 
 var employeeInfo = map[string]string{
 	"1001": `{id: "1001", name: "Bruce Shrimpsteen"}`,
 	"1002": `{id: "1002", name: "Eelton John"}`,
-	"1003": `{id: "1003", name: "Tuna Turner"}`,
+	"1003": ``,
+	"1004": `{id: "1004", name: "Tuna Turner"}`,
 }
 
 // Mock function that fetches info from api
@@ -42,6 +43,9 @@ func openFile(filePath string) *os.File {
 }
 
 func writeFile(file *os.File, data string) (int, error) {
+	if len(data) == 0 {
+		return 0, errors.New("Missing data")
+	}
 	fmt.Println("Writing to file:", data)
 	return fmt.Fprintln(file, data)
 }
