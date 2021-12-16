@@ -35,7 +35,7 @@ func main() {
 
 func settleInvoice(invoice Invoice) {
 	newBalance := invoice.account.balance - invoice.amount
-	if newBalance > 0 {
+	if newBalance >= 0 {
 		invoice.settled = true
 		invoice.account.balance = newBalance
 	}
