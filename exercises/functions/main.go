@@ -27,19 +27,19 @@ func main() {
 			{path: "octocat-secrets"},
 		},
 	}
-	baseUrl := "https://github.com/octocat"
+	baseURL := "https://github.com/octocat"
 
-	// TODO: call buildUrl with baseUrl and "Hello-World" and print the results
+	// TODO: call buildURL with baseURL and "Hello-World" and print the results
 
 	// Uncomment this when you write the processRepos function
-	// processedUser := processRepos(user, baseUrl)
+	// processedUser := processRepos(user, baseURL)
 	// for _, repo := range processedUser.repositories {
 	//	fmt.Println(getDescription(repo))
 	// }
 	}
 }
 
-// TODO: Write a function called buildUrl here
+// TODO: Write a function called buildURL here
 
 // func getDescription(repo) {
 // 	return github.GetDescription(repo.url)
