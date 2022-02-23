@@ -14,7 +14,7 @@ type FileLogger struct {
 	Path         string
 }
 
-func (l FileLogger) writeToFile(message string) {
+func writeToFile(l FileLogger, message string) {
 	file, err := os.OpenFile(l.Path, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
 	defer file.Close()
 
@@ -28,6 +28,6 @@ func (l FileLogger) writeToFile(message string) {
 	}
 }
 
-func (l FileLogger) format(msg Message) string {
+func format(l FileLogger, msg Message) string {
 	return fmt.Sprintf("[%v] %v", msg.Level, msg.Body)
 }
