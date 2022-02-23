@@ -5,20 +5,17 @@ import (
 )
 
 func main() {
-	fl := loggers.FileLogger{Path: "production.log"}
-
 	messages := []loggers.Message{
 		loggers.Message{Level: "info", Body: "Process started"},
 		loggers.Message{Level: "warn", Body: "Just a warning"},
 		loggers.Message{Level: "info", Body: "Process ending"},
 	}
 
-	logger := loggers.DualLogger{
-		FileLogger: fl,
-	}
+	fl := loggers.FileLogger{Path: "production.log"}
+
+	// Define DualLogger here
 
 	for _, msg := range messages {
 		// Use DualLogger.Log here
-		logger.Log(msg)
 	}
 }
