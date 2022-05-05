@@ -25,8 +25,7 @@ func main() {
 	currencies := []string{"USD", "EUR", "ISK", "JPY", "NZD", "SEK", "CAD", "CHF", "HKD", "KRW", "PLN"}
 	start := time.Now()
 	for _, currency := range currencies {
-		currency2 := currency
-		oneHundredPoundsIn(currency2)
+		oneHundredPoundsIn(currency)
 	}
 	fmt.Println("That took", time.Since(start))
 }
