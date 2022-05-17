@@ -22,7 +22,7 @@ func GrayPhotograph(in photograph) (out photograph) {
 func main() {
 	colour := LoadPhotographFromJPEG("./wavy-shapes.jpg")
 	start := time.Now()
-	GrayPhotograph(colour)
-	fmt.Println("Conversion took %ss, saving file...", time.Since(start))
+	gray := GrayPhotograph(colour)
+	fmt.Printf("Conversion took %fs, saving file\n", time.Since(start).Seconds())
 	SavePhotographToJPEG(gray, "./wavy-shapes-gray.jpg")
 }
