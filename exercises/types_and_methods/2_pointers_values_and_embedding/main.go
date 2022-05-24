@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/skiller-whale/core-go/exercises/types_and_methods/2_using_methods/loggers"
+	"github.com/skiller-whale/core-go/exercises/types_and_methods/2_pointers_values_and_embedding/loggers"
 )
 
 func main() {
