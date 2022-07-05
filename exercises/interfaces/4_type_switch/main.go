@@ -13,5 +13,5 @@ func PrintlnBig(args ...interface{}) {
 }
 
 func main() {
-	PrintlnBig(99, "red balloons", func() string { return "floating in the summer sky" })
+	PrintlnBig(99, "red balloons", "floating in the summer sky")
 }
