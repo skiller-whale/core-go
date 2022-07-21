@@ -1,4 +1,4 @@
-FROM golang:1.16.5-alpine3.13
+FROM golang:1.18.1-alpine3.15
 
 # Copy files for the sync script
 COPY _sync /app/sync
