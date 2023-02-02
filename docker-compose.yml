@@ -1,20 +1,24 @@
 version: '3.7'
 services:
   go:
-    build:
-      context: .
-    network_mode: host
+    profiles: ["go"] # exclude from "docker-compose up"
+    image: golang:1.20.0
+    command: /bin/sh -c 'cd /app/exercises; exec /bin/bash'
+    volumes:
+      - ./exercises:/app/exercises
+      - ./attendance_id:/app/sync/attendance_id
+  sync:
+    image: ghcr.io/skiller-whale/learnersync
     environment:
       SERVER_URL: https://train.skillerwhale.com
       GO111MODULES: 'on'
       WATCHER_BASE_PATH: /app
       ATTENDANCE_ID_FILE: /app/sync/attendance_id
-      WATCHED_EXTS: |
-        ["go", "mod", "command_history"]
-      IGNORE_DIRS: |
-        [".git", "bin"]
+      WATCHED_EXTS: "go mod command_history"
+      IGNORE_MATCH: .git/ bin/
     volumes:
       - ./exercises:/app/exercises
       - ./attendance_id:/app/sync/attendance_id
     stdin_open: true
     tty: true
+    network_mode: host
