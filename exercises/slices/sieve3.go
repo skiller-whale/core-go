@@ -2,22 +2,22 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
-func sieve(n int) []bool {
-	s := make([]bool, n)
-	s[0] = true
+func sieve(n int) (notPrime []bool) {
+	notPrime = make([]bool, n)
+	notPrime[0] = true
+	notPrime[1] = true
 
-	for p := 2; p < int(math.Sqrt(float64(n))); p++ {
-		for q := p + p; q < n; q += p {
-			s[q] = true
-		}
-		for p++; s[p]; p++ {
+	for p := 2; p < n; p++ {
+		if !notPrime[p] {
+			for q := 2; q*p < n; q += 1 {
+				notPrime[q*p] = true
+			}
 		}
 	}
 
-	return s
+	return notPrime
 }
 
 func main() {

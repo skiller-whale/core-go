@@ -12,23 +12,23 @@ func estimateOfPrimesIn(n int) int {
 	return int(float64(n) / math.Log(float64(n)))
 }
 
-func sieve(n int) (s []bool) {
-	s = make([]bool, n)
-	s[0] = true
+func sieve(n int) (notPrime []bool) {
+	notPrime = make([]bool, n)
+	notPrime[0] = true
+	notPrime[1] = true
 
-	for p := 2; p < int(math.Sqrt(float64(n))); {
-		for q := p + p; q < n; q += p {
-			s[q] = true
-		}
-		for p++; s[p]; p++ {
+	for p := 2; p < n; p++ {
+		if !notPrime[p] {
+			for q := 2; q*p < n; q += 1 {
+				notPrime[q*p] = true
+			}
 		}
 	}
 
-	return s
+	return notPrime
 }
 
 func summariseSieve(s []bool) (p []int) {
-	p = make([]int, 0, estimateOfPrimesIn(len(s)))
 	for i, notPrime := range s {
 		if !notPrime {
 			p = append(p, i)

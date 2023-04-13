@@ -3,17 +3,17 @@ package main
 import "fmt"
 
 func main() {
-	s := []bool{true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false}
+	composite := []bool{true, true, 20: false}
 
-	for p := 2; p < 5; p++ {
-		for q := p + p; q < 20; q += p {
-			s[q] = true
-		}
-		for p++; s[p]; p++ {
+	for p := 2; p < 21; p++ {
+		if !notPrime[p] {
+			for q := 2; q*p < 21; q += 1 {
+				notPrime[q*p] = true
+			}
 		}
 	}
 
-	for i, v := range s {
+	for i, v := range notPrime {
 		if !v {
 			fmt.Print(i, " ")
 		}
