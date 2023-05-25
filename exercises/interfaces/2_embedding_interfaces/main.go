@@ -1,57 +1,51 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+type Parrot struct{}
 
-type pricedInKrona interface {
-	price() int
-}
+func (p Parrot) Fly() string     { return "Parrot flying" }
+func (p Parrot) Glide() string   { return "Parrot gliding" }
+func (p Parrot) Breathe() string { return "Parrot breathing" }
+func (p Parrot) Talk() string    { return "Parrot talking" }
+func (p Parrot) Walk() string    { return "Parrot walking" }
 
-type coloured interface {
-	colour() string
-}
+type FruitBat struct{}
 
-type titled interface {
-	title() string
-}
+func (f FruitBat) Fly() string     { return "Fruit bat flying" }
+func (f FruitBat) Breathe() string { return "Fruit bat breathing" }
+func (f FruitBat) Glide() string   { return "Fruit bat gliding" }
 
-type BaseProduct struct {
-	titleEnglish string
-	looksLike    string
-	priceInPence int
-}
+type Dog struct{}
 
-func (b BaseProduct) price() int {
-	// exchange rate
-	return (b.priceInPence * 171) / 100
-}
+func (d Dog) Walk() string    { return "Dog walking" }
+func (d Dog) Breathe() string { return "Dog breathing" }
 
-func (b BaseProduct) colour() string {
-	// Always list colour first
-	return strings.Split(b.looksLike, ",")[0]
-}
+type Human struct{}
 
-func (b BaseProduct) title() string {
-	// eigum við að þýða þetta sjálfkrafa?
-	return b.titleEnglish
-}
+func (h Human) Walk() string    { return "Human walking" }
+func (h Human) Breathe() string { return "Human breathing" }
+func (h Human) Talk() string    { return "Human talking" }
 
-func printIcelandicProducts(items []IcelandicProduct) {
-	fmt.Printf("|Item name                     |Price (kr)|Colour         |\n")
-	fmt.Printf("-----------------------------------------------------------\n")
-	for _, item := range items {
-		fmt.Printf("|%-30v|% 10v|%-15v|\n", item.title(), item.price(), item.colour())
+type SugarGlider struct{}
+
+func (s SugarGlider) Glide() string   { return "Sugar glider gliding" }
+func (s SugarGlider) Breathe() string { return "Sugar glider breathing" }
+func (s SugarGlider) Walk() string    { return "Sugar glider walking" }
+
+func PrintTypes(b ...any) {
+	for _, v := range b {
+		println(v)
 	}
 }
+
+// Add the interfaces and methods here.
 
 func main() {
-	items := []BaseProduct{
-		{titleEnglish: "Whale soft toy", looksLike: "Red", priceInPence: 995},
-		{titleEnglish: "Poster of the Icelandic plains", looksLike: "White, entirely", priceInPence: 1495},
-		{titleEnglish: "Puffin keychain", looksLike: "Orange", priceInPence: 300},
-	}
+	p, f, d, h, s := Parrot{}, FruitBat{}, Dog{}, Human{}, SugarGlider{}
 
-	printIcelandicProducts(items)
+	// Implement these methods, whose arguments types should be interfaces.
+	PrintTypes(p, f, d, h, s)
+	BreatheTogether(p, f, d, h, s)
+	TalkTogether(p, h)
+	WalkTogether(p, d, h, s)
+	FlyThenGlideTogether(p, f)
 }

@@ -2,36 +2,40 @@ package main
 
 import "fmt"
 
-type priced interface {
-	price() int
+type Priced interface {
+	Price() int
 }
 
 type Handbag struct {
 	pence  int
 	colour string
 }
-type Footspray struct {
-	price int
+
+type SuedeProtectorSpray struct {
+	Price int
 }
-type ColaBottle struct{}
+
+type CowboyBoots struct {
+	cents int
+}
 
 func (h Handbag) price() int {
 	return h.pence
 }
-func (h ColaBottle) price() float64 {
-	return 1.0 // Always costs 1 penny
+func (h CowboyBoots) price() float64 {
+	return float64(h.cents) * 0.8 // convert from US Dollars
 }
 
 func main() {
-	items := []priced{
-		Handbag{pence: 1995},
-		Footspray{price: 495},
-		ColaBottle{},
+	items := []Priced{
+		Handbag{pence: 3854, colour: "red"},
+		SuedeProtectorSpray{price: 495},
+		CowboyBoots{cents: 9995},
 	}
 
 	sum := 0
 	for _, item := range items {
-		sum += item.price()
+		sum += item.Price()
 		fmt.Println("Adding", item)
 	}
 	fmt.Println("Total price =", sum)
