@@ -6,29 +6,16 @@ import (
 )
 
 func main() {
-	// TODO: Declare the set variable here
-
-
-	// TODO: Populate set, so it represents the set of words in the slice
-	// returned by the getWords() function.
-
-	// search(set)
-}
-
-func search(words map[string]bool) {
+	// 1. Declare the set variable here
+	// 2. Populate set, so it represents the set of words in the slice returned by the getWords() function.
 	for {
 		fmt.Print("\nEnter your search term: ")
 		var word string
 		fmt.Scanln(&word)
 
-		// TODO: Print "Found" if word is in words, and "Not Found" otherwise
-
+		// 3. Print "Found" if `word`` is in the set of words, "Not Found" otherwise
 	}
 }
-
-/* -------------------------------------------------- */
-/* You don't need to worry about any code below here. */
-/* -------------------------------------------------- */
 
 const text = `Be thou blest, Bertram, and succeed thy father
 In manners, as in shape! thy blood and virtue
