@@ -6,11 +6,8 @@ import "io"
 import "strings"
 import "fmt"
 
-// FIXME:
-// 1. Embed this interface into WebSearch
-// 2. Create two types which implement it based on SearchSimple and SearchIndexed
-// 3. Change the use of WebSearch{} in main() to check you can switch between the implementations
-
+// Embed this interface into WebSearch, then refactor the indexing & searching out into a separate type.
+//
 // type Searcher interface {
 // 	IndexWords(words []string)
 // 	Search(word string) bool
@@ -18,10 +15,10 @@ import "fmt"
 
 type WebSearch struct {
 	Url   string
-	words []string
+	words []string // An implementation detail to be refactored out
 }
 
-func (ws *WebSearch) SearchSimple(word string) bool {
+func (ws *WebSearch) Search(word string) bool {
 	// Just check every word in the list to see if it matches this one.
 	for _, w := range ws.words {
 		if w == word {
@@ -31,7 +28,9 @@ func (ws *WebSearch) SearchSimple(word string) bool {
 	return false
 }
 
-// func (ws *WebSearch) SearchIndexed(word string) bool {
+// (optional) An alternative implementation to attach to a new `IndexedSearcher` type:
+//
+// func (ws *WebSearch) Search(word string) bool {
 // 	// First build an index of all the words (slow)
 // 	var index map[string]bool = make(map[string]bool)
 // 	for _, w := range ws.words {
@@ -40,6 +39,13 @@ func (ws *WebSearch) SearchSimple(word string) bool {
 // 	// Then look up the word in the index (fast)
 // 	return index[word]
 // }
+
+func (l *WebSearch) IndexWords(words []string) {
+	// just store them to search later, nothing clever
+	l.words = words
+}
+
+// WebSearch and FetchAndIndex methods don't need changing! 👇🏻
 
 func (ws *WebSearch) fetch() []string {
 	resp, e := http.Get(ws.Url)
@@ -54,17 +60,18 @@ func (ws *WebSearch) fetch() []string {
 	return strings.Split(string(bytes), " ")
 }
 
-func (l *WebSearch) Index() {
+func (l *WebSearch) FetchAndIndex() {
 	// Just store the words in memory
-	l.words = l.fetch()
+	l.IndexWords(l.fetch())
 }
 
-var wordsToFind string = `Ishmael hark realism Ahab fathomless chasm Victoria brave abyss seaman boat racing submarine whale harpoon`
-
 func main() {
+	var wordsToFind string = `Ishmael hark realism Ahab fathomless chasm Victoria brave abyss seaman boat racing submarine whale harpoon`
 	var ws WebSearch = WebSearch{Url: "http://www.gutenberg.org/files/2701/old/moby10b.txt"} // Moby Dick by Herman Melville
-	ws.Index()
+
+	ws.FetchAndIndex()
+
 	for _, w := range strings.Split(wordsToFind, " ") {
-		fmt.Println(w, "→", ws.SearchSimple(w))
+		fmt.Println(w, "→", ws.Search(w))
 	}
 }
