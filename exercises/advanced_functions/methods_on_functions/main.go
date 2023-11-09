@@ -17,7 +17,7 @@ func main() {
 	fmt.Sscan(os.Args[2], &a)
 	fmt.Sscan(os.Args[3], &b)
 
-	ops := map[string]Op{
+	ops := map[string]ArithmeticOp{
 		"add": func(a, b int) int { return a + b },
 		"sub": func(a, b int) int { return a - b },
 		"mul": func(a, b int) int { return a * b },
