@@ -1,10 +1,12 @@
 // Search a web page for a list of words
 package main
 
-import "net/http"
-import "io"
-import "strings"
-import "fmt"
+import (
+	"fmt"
+	"io"
+	"net/http"
+	"strings"
+)
 
 // Embed this interface into WebSearch, then refactor the indexing & searching out into a separate type.
 //
@@ -45,7 +47,7 @@ func (l *WebSearch) IndexWords(words []string) {
 	l.words = words
 }
 
-// WebSearch and FetchAndIndex methods don't need changing! 👇🏻
+// fetch and FetchAndIndex methods don't need changing! 👇🏻
 
 func (ws *WebSearch) fetch() []string {
 	resp, e := http.Get(ws.Url)

@@ -7,13 +7,19 @@ import (
 
 func main() {
 	// 1. Declare the set variable here
+	// TODO
+
 	// 2. Populate set, so it represents the set of words in the slice returned by the getWords() function.
+	// TODO
+
+	// Repeatedly search for words in the set
 	for {
 		fmt.Print("\nEnter your search term: ")
 		var word string
 		fmt.Scanln(&word)
 
 		// 3. Print "Found" if `word`` is in the set of words, "Not Found" otherwise
+		// TODO
 	}
 }
 
