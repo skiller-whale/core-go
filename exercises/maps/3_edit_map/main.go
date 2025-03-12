@@ -1,7 +1,7 @@
 package main
 
 func main() {
-	codeToName := make(map[string]string)
+	codeToName := map[string]string{}
 	for _, country := range Countries {
 		codeToName[country[0]] = country[1]
 	}

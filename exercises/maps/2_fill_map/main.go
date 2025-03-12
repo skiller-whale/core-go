@@ -3,14 +3,14 @@ package main
 import "fmt"
 
 func main() {
-	// Exercise 2: Create the `codeToName` map again, but filling it from the Countries slice
-	codeToName := make(map[string]string)
-	for _, country := range Countries {
-		codeToName[country[0]] = country[1]
-	}
-	fmt.Println(codeToName["DE"])
+	// Exercise 2: Create the `codeToName` map again, but filling it from the
+	// Countries slice instead of hardcoding the values in a literal.
+
 
 }
+
+// Do not modify the Countries slice below. You will use this to create a map
+// in the main function.
 
 var Countries = [][2]string{
 	{"AF", "Afghanistan"},
