@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"time"
 )
@@ -16,7 +16,7 @@ func noError(e error) {
 func oneHundredPoundsIn(currencySymbol string) {
 	resp, err := http.Get("https://api.frankfurter.app/latest?amount=100&from=GBP&to=" + currencySymbol)
 	noError(err)
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	noError(err)
 	fmt.Println(string(body))
 }
