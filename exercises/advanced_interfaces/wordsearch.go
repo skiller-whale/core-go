@@ -1,12 +1,10 @@
 // Search a web page for a list of words
 package main
 
-import (
-	"fmt"
-	"io"
-	"net/http"
-	"strings"
-)
+import "net/http"
+import "io"
+import "strings"
+import "fmt"
 
 // Embed this interface into WebSearch, then refactor the indexing & searching out into a separate type.
 //
