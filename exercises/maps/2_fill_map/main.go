@@ -6,7 +6,7 @@ func main() {
 	// Exercise 2: Create the `codeToName` map again, but filling it from the
 	// Countries slice instead of hardcoding the values in a literal.
 
-
+	fmt.Println("TODO: Print the country name for DE")
 }
 
 // Do not modify the Countries slice below. You will use this to create a map
